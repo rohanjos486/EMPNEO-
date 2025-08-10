@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Hogwarts Task Grimoire ⚡</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Creepster&display=swap');
+        
+        body {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, #1a0033, #2d1b69, #4c1d95, #581c87, #6b21a8);
+            background-size: 300% 300%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .magical-particle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #c084fc, #7c3aed);
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: float 20s infinite linear;
+            pointer-events: none;
+            box-shadow: 0 0 10px #c084fc;
+        }
+        
+        @keyframes float {
+            0% { 
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% { 
+                transform: translateY(-10vh) rotate(360deg) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        /* Animated Animals */
+        .animated-owl {
+            position: fixed;
+            font-size: 3rem;
+            z-index: 5;
+            animation: flyOwl 25s infinite linear;
+            filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
+        }
+        
+        @keyframes flyOwl {
+            0% { 
+                transform: translateX(-100px) translateY(20vh) scale(1);
+                opacity: 0;
+            }
+            5% { opacity: 1; }
+            25% { 
+                transform: translateX(25vw) translateY(15vh) scale(1.1);
+            }
+            50% { 
+                transform: translateX(50vw) translateY(25vh) scale(0.9);
+            }
+            75% { 
+                transform: translateX(75vw) translateY(10vh) scale(1.2);
+            }
+            95% { opacity: 1; }
+            100% { 
+                transform: translateX(110vw) translateY(30vh) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        .animated-snake {
+            position: fixed;
+            font-size: 2.5rem;
+            z-index: 5;
+            animation: slitherSnake 30s infinite ease-in-out;
+            filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.6));
+        }
+        
+        @keyframes slitherSnake {
+            0% { 
+                transform: translateX(-50px) translateY(80vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            25% { 
+                transform: translateX(20vw) translateY(75vh) rotate(15deg);
+            }
+            50% { 
+                transform: translateX(50vw) translateY(85vh) rotate(-10deg);
+            }
+            75% { 
+                transform: translateX(80vw) translateY(70vh) rotate(20deg);
+            }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateX(110vw) translateY(90vh) rotate(0deg);
+                opacity: 0;
+            }
+        }
+        
+        .animated-phoenix {
+            position: fixed;
+            font-size: 3.5rem;
+            z-index: 5;
+            animation: soarPhoenix 35s infinite ease-in-out;
+            filter: drop-shadow(0 0 15px rgba(249, 115, 22, 0.7));
+        }
+        
+        @keyframes soarPhoenix {
+            0% { 
+                transform: translateX(110vw) translateY(60vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            5% { opacity: 1; }
+            20% { 
+                transform: translateX(80vw) translateY(30vh) rotate(-15deg) scale(1.2);
+            }
+            40% { 
+                transform: translateX(50vw) translateY(40vh) rotate(10deg) scale(1);
+            }
+            60% { 
+                transform: translateX(20vw) translateY(20vh) rotate(-20deg) scale(1.3);
+            }
+            80% { 
+                transform: translateX(10vw) translateY(50vh) rotate(5deg) scale(0.9);
+            }
+            95% { opacity: 1; }
+            100% { 
+                transform: translateX(-100px) translateY(70vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+        
+        .animated-stag {
+            position: fixed;
+            font-size: 3rem;
+            z-index: 5;
+            animation: leapStag 28s infinite linear;
+            filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.6));
+        }
+        
+        @keyframes leapStag {
+            0% { 
+                transform: translateX(-80px) translateY(70vh) scale(1);
+                opacity: 0;
+            }
+            8% { opacity: 1; }
+            20% { 
+                transform: translateX(15vw) translateY(60vh) scale(1.1);
+            }
+            35% { 
+                transform: translateX(35vw) translateY(55vh) scale(0.9);
+            }
+            50% { 
+                transform: translateX(55vw) translateY(65vh) scale(1.2);
+            }
+            70% { 
+                transform: translateX(75vw) translateY(50vh) scale(1);
+            }
+            92% { opacity: 1; }
+            100% { 
+                transform: translateX(110vw) translateY(75vh) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        .house-gryffindor { 
+            background: linear-gradient(135deg, #dc2626, #7c2d12, #eab308);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+        }
+        .house-hufflepuff { 
+            background: linear-gradient(135deg, #eab308, #1f2937, #facc15);
+            box-shadow: 0 0 20px rgba(234, 179, 8, 0.5);
+        }
+        .house-ravenclaw { 
+            background: linear-gradient(135deg, #1e40af, #1e293b, #0ea5e9);
+            box-shadow: 0 0 20px rgba(30, 64, 175, 0.5);
+        }
+        .house-slytherin { 
+            background: linear-gradient(135deg, #15803d, #374151, #10b981);
+            box-shadow: 0 0 20px rgba(21, 128, 61, 0.5);
+        }
+        
+        .task-completed {
+            animation: completeTask 0.8s ease-out;
+        }
+        
+        @keyframes completeTask {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.08); }
+            60% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        
+        .reward-popup {
+            animation: rewardAppear 4s ease-out forwards;
+            background: linear-gradient(135deg, #7c3aed, #c084fc, #fbbf24);
+            border: 2px solid #c084fc;
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.8);
+        }
+        
+        @keyframes rewardAppear {
+            0% { opacity: 0; transform: translateY(-30px) scale(0.7); }
+            15% { opacity: 1; transform: translateY(0) scale(1.1); }
+            20% { transform: scale(1); }
+            85% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-30px) scale(0.7); }
+        }
+        
+        .glow-purple {
+            box-shadow: 0 0 25px rgba(147, 51, 234, 0.6);
+            border: 2px solid rgba(196, 132, 252, 0.4);
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2.5s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(147, 51, 234, 1);
+                transform: scale(1.05);
+            }
+        }
+        
+        .floating-castle {
+            animation: floatCastle 8s ease-in-out infinite;
+        }
+        
+        @keyframes floatCastle {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        
+        .magical-text {
+            background: linear-gradient(135deg, #fbbf24, #c084fc, #f3e8ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShimmer 4s ease-in-out infinite;
+        }
+        
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .dark-glass {
+            background: rgba(30, 20, 60, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(196, 132, 252, 0.2);
+        }
+        
+        .enchanted-input {
+            background: rgba(15, 10, 40, 0.5);
+            border: 2px solid rgba(147, 51, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .enchanted-input:focus {
+            border-color: rgba(196, 132, 252, 0.8);
+            box-shadow: 0 0 15px rgba(147, 51, 234, 0.4);
+            outline: none;
+        }
+        
+        .mystical-button {
+            background: linear-gradient(135deg, #7c3aed, #c084fc);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mystical-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+        }
+        
+        .mystical-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .mystical-button:hover::before {
+            left: 100%;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white overflow-x-hidden relative">
+    
+    <!-- Animated Animals -->
+    <div class="animated-owl">🦉</div>
+    <div class="animated-snake">🐍</div>
+    <div class="animated-phoenix">🔥🦅</div>
+    <div class="animated-stag">🦌</div>
+    
+    <!-- Magical Particles -->
+    <div id="particles-container"></div>
+    
+    <!-- Enhanced floating elements -->
+    <div class="fixed inset-0 opacity-15 pointer-events-none">
+        <div class="absolute top-20 left-20 text-7xl floating-castle">🏰</div>
+        <div class="absolute top-60 right-32 text-5xl" style="animation: floatCastle 6s ease-in-out infinite;">🌙</div>
+        <div class="absolute bottom-40 left-16 text-6xl" style="animation: floatCastle 7s ease-in-out infinite;">🧙‍♂️</div>
+        <div class="absolute bottom-20 right-20 text-5xl" style="animation: floatCastle 5s ease-in-out infinite;">⚡</div>
+        <div class="absolute top-1/3 left-1/2 text-4xl" style="animation: floatCastle 9s ease-in-out infinite;">🔮</div>
+        <div class="absolute top-80 left-32 text-4xl" style="animation: floatCastle 8s ease-in-out infinite;">🪄</div>
+        <div class="absolute bottom-60 right-40 text-5xl" style="animation: floatCastle 6s ease-in-out infinite;">📚</div>
+        <div class="absolute top-40 left-2/3 text-4xl" style="animation: floatCastle 7s ease-in-out infinite;">🕯️</div>
+    </div>
+
+    <!-- Reward notification -->
+    <div id="reward-notification" class="fixed top-4 left-1/2 transform -translate-x-1/2 px-8 py-4 rounded-full font-bold text-black shadow-2xl z-50 hidden text-lg">
+    </div>
+
+    <div class="max-w-6xl mx-auto dark-glass rounded-3xl p-8 shadow-2xl relative z-10 m-6">
+        
+        <!-- Header -->
+        <header class="flex items-center justify-between mb-8">
+            <div class="flex items-center gap-8">
+                <div id="house-emblem" class="w-24 h-24 rounded-full flex items-center justify-center text-4xl house-gryffindor shadow-2xl border-4 border-purple-400/30 cursor-pointer transition-all hover:scale-110 hover:rotate-12">
+                    🦁
+                </div>
+                <div>
+                    <h1 class="text-5xl font-bold magical-text mb-2">
+                        ⚡ HOGWARTS TASK GRIMOIRE ⚡
+                    </h1>
+                    <p class="text-xl text-purple-200 opacity-90" id="house-info">Gryffindor • Daring, Nerve, and Chivalry</p>
+                    <div class="flex gap-3 mt-2" id="house-traits">
+                        <span class="text-sm px-3 py-1 bg-purple-600/30 rounded-full border border-purple-400/40">Brave</span>
+                        <span class="text-sm px-3 py-1 bg-purple-600/30 rounded-full border border-purple-400/40">Daring</span>
+                        <span class="text-sm px-3 py-1 bg-purple-600/30 rounded-full border border-purple-400/40">Courageous</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <div class="text-center p-4 bg-gradient-to-br from-yellow-500/20 to-orange-600/20 rounded-xl border-2 border-yellow-400/40 glow-purple">
+                    <div class="text-3xl font-bold text-yellow-300" id="house-points">0</div>
+                    <div class="text-sm opacity-80">House Points</div>
+                </div>
+                
+                <div class="text-center p-4 bg-gradient-to-br from-emerald-500/20 to-blue-600/20 rounded-xl border-2 border-emerald-400/40 glow-purple">
+                    <div class="text-3xl font-bold text-emerald-300" id="streak">0</div>
+                    <div class="text-sm opacity-80">Day Streak</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Magic controls -->
+        <div class="flex items-center gap-6 mb-8 p-6 bg-gradient-to-r from-purple-600/20 via-violet-700/20 to-purple-800/20 rounded-2xl border-2 border-purple-500/40 glow-purple">
+            <div class="flex items-center gap-4">
+                <span class="text-2xl">🏠</span>
+                <select id="house-selector" class="rounded-xl p-3 enchanted-input text-white text-lg font-semibold">
+                    <option value="gryffindor">🦁 Gryffindor</option>
+                    <option value="hufflepuff">🦡 Hufflepuff</option>
+                    <option value="ravenclaw">🦅 Ravenclaw</option>
+                    <option value="slytherin">🐍 Slytherin</option>
+                </select>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <span class="text-2xl">🪄</span>
+                <button id="cast-spell-btn" class="px-6 py-3 rounded-xl mystical-button text-white font-bold text-lg">
+                    Cast Lumos ✨
+                </button>
+            </div>
+
+            <button id="summon-quests-btn" class="px-6 py-3 rounded-xl mystical-button text-white font-bold text-lg">
+                🔮 Summon Daily Quests
+            </button>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="mb-8 p-6 bg-gradient-to-r from-emerald-600/20 via-teal-700/20 to-blue-700/20 rounded-2xl border-2 border-emerald-500/40 glow-purple">
+            <div class="flex justify-between items-center mb-3">
+                <span class="font-bold text-xl">📊 Quest Progress</span>
+                <span class="text-2xl font-bold" id="completion-rate">0%</span>
+            </div>
+            <div class="w-full bg-black/50 rounded-full h-4 border border-purple-400/30">
+                <div id="progress-bar" class="h-4 bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-500 rounded-full transition-all duration-1000 shadow-lg" style="width: 0%"></div>
+            </div>
+            <div class="text-lg mt-2 opacity-90" id="progress-text">
+                0 of 0 tasks completed • 0 completed today
+            </div>
+        </div>
+
+        <!-- Add task form -->
+        <div class="flex gap-4 items-center mb-8">
+            <div class="relative flex-1">
+                <input 
+                    id="new-task-input"
+                    placeholder="Conjure a new magical task... ✨" 
+                    class="w-full p-5 rounded-2xl enchanted-input text-white placeholder-purple-300 text-lg pl-16"
+                />
+                <span class="absolute left-5 top-1/2 transform -translate-y-1/2 text-2xl">📜</span>
+            </div>
+            <button 
+                id="add-task-btn"
+                class="px-8 py-5 rounded-2xl font-bold text-xl shadow-2xl mystical-button text-white"
+            >
+                🪄 Enchant Task
+            </button>
+        </div>
+
+        <div class="flex gap-8">
+            <!-- Tasks list -->
+            <div class="flex-1">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-3xl font-bold flex items-center gap-3">
+                        📋 Active Quests
+                        <span class="text-xl font-normal opacity-80" id="task-count">(0)</span>
+                    </h2>
+                    <div class="relative">
+                        <input 
+                            id="search-input"
+                            placeholder="🔍 Search magical tasks..." 
+                            class="p-4 pl-12 rounded-2xl enchanted-input text-white placeholder-purple-300 text-lg"
+                        />
+                        <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-xl">🔍</span>
+                    </div>
+                </div>
+
+                <div id="tasks-container" class="space-y-4">
+                    <div id="empty-state" class="p-10 rounded-2xl dark-glass text-center glow-purple">
+                        <div class="text-6xl mb-4">🦉</div>
+                        <div class="text-2xl opacity-90 magical-text">Your quest log is empty! Time for some magical adventures!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily quests sidebar -->
+            <aside class="w-96">
+                <div class="p-8 rounded-2xl bg-gradient-to-br from-amber-600/20 via-yellow-600/20 to-orange-700/20 border-2 border-amber-500/40 shadow-2xl glow-purple mb-8">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center gap-3 magical-text">
+                        🗓️ Daily Magical Quests
+                    </h3>
+                    <p class="text-lg opacity-90 mb-6">
+                        Complete these enchanted daily quests to earn extra house points and magical rewards! 🏆
+                    </p>
+
+                    <div id="daily-quests-container" class="space-y-4">
+                        <div id="daily-empty-state" class="text-lg opacity-80 text-center p-6 bg-black/30 rounded-xl border border-purple-400/30">
+                            🔮 No daily quests summoned yet. Use your crystal ball above!
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex gap-3">
+                        <button 
+                            id="summon-daily-btn"
+                            class="flex-1 py-4 rounded-xl mystical-button text-white font-bold text-lg"
+                        >
+                            🔮 Summon 3 Quests
+                        </button>
+                        <button 
+                            id="clear-daily-btn"
+                            class="py-4 px-6 rounded-xl bg-red-600/30 border-2 border-red-500/40 text-red-300 hover:bg-red-600/40 transition-all hover:scale-105"
+                        >
+                            🧹 Clear
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-indigo-600/20 via-purple-700/20 to-violet-800/20 border-2 border-indigo-500/40 glow-purple">
+                    <div class="text-2xl font-bold mb-4 magical-text" id="house-wisdom">🏰 Gryffindor Wisdom</div>
+                    <ul class="space-y-3 text-lg opacity-95">
+                        <li class="flex items-start gap-3">
+                            <span class="text-xl">⚡</span>
+                            <span>Complete daily quests for bonus house points</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-xl">🔍</span>
+                            <span>Use the search enchantment to find tasks quickly</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-xl">🪄</span>
+                            <span>Cast spells to boost your magical energy</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-xl">🏠</span>
+                            <span>Switch houses to change your magical aura</span>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <footer class="mt-10 text-center">
+            <div class="text-lg opacity-80 mb-3 magical-text">
+                ⚡ Crafted with Ancient Magic • Powered by House Elf Technology ⚡
+            </div>
+            <div class="text-sm opacity-70">
+                "It is our choices that show what we truly are, far more than our abilities." - Albus Dumbledore
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Data and constants
+        const SAMPLE_QUESTS = [
+            "Practice the Lumos spell for 15 minutes in the Astronomy Tower",
+            "Study one chapter from 'A History of Magic' by candlelight",
+            "Organize your Potions ingredient collection in the dungeon",
+            "Help a fellow student master the Wingardium Leviosa charm",
+            "Complete 30 minutes of Ancient Runes study in the library",
+            "Tidy the dormitory with a magical cleaning sprint",
+            "Research the behavioral patterns of a Hippogriff",
+            "Practice precise wand movements for advanced charms",
+            "Brew a warming potion (or enchanted hot chocolate)",
+            "Write magical observations in your spellcaster's journal",
+            "Arrange spell books by magical classification system",
+            "Train your reflexes with Quidditch-inspired exercises",
+            "Meditate in the Room of Requirement for inner magic",
+            "Study Herbology: Care for magical plants",
+            "Practice Patronus meditation and visualization"
+        ];
+
+        const HOUSES = {
+            gryffindor: {
+                name: "Gryffindor",
+                colors: "house-gryffindor",
+                bgColors: "from-red-800/20 to-yellow-600/20",
+                emoji: "🦁",
+                motto: "Daring, Nerve, and Chivalry",
+                traits: ["Brave", "Daring", "Courageous"]
+            },
+            hufflepuff: {
+                name: "Hufflepuff",
+                colors: "house-hufflepuff",
+                bgColors: "from-yellow-600/20 to-gray-800/20",
+                emoji: "🦡",
+                motto: "Hard Work and Loyalty",
+                traits: ["Loyal", "Patient", "Fair"]
+            },
+            ravenclaw: {
+                name: "Ravenclaw",
+                colors: "house-ravenclaw",
+                bgColors: "from-blue-700/20 to-gray-700/20",
+                emoji: "🦅",
+                motto: "Wit Beyond Measure",
+                traits: ["Wise", "Clever", "Creative"]
+            },
+            slytherin: {
+                name: "Slytherin",
+                colors: "house-slytherin",
+                bgColors: "from-green-800/20 to-gray-700/20",
+                emoji: "🐍",
+                motto: "Cunning and Ambition",
+                traits: ["Ambitious", "Cunning", "Resourceful"]
+            }
+        };
+
+        const MAGICAL_REWARDS = [
+            "🪄 Discovered a rare Elder Wand fragment!",
+            "⭐ Earned 50 bonus house points!",
+            "🏆 Awarded the Order of Merlin, Third Class!",
+            "🦉 Hedwig delivered a congratulatory letter!",
+            "🍫 Found a rare Chocolate Frog card!",
+            "💎 Unearthed a precious Philosopher's Stone shard!",
+            "📚 Mastered an ancient spell from Merlin's grimoire!",
+            "🔮 Activated the Crystal of Eternal Wisdom!",
+            "⚡ Lightning scar glowing with magical energy!",
+            "🎭 Granted access to the Room of Requirement!",
+            "🌟 Patronus grew stronger and more radiant!",
+            "🗡️ Summoned the Sword of Gryffindor!"
+        ];
+
+        const SPELLS = [
+            { name: "Lumos Maxima", effect: "Brilliant Light", icon: "✨" },
+            { name: "Alohomora", effect: "Unlock Secrets", icon: "🗝️" },
+            { name: "Wingardium Leviosa", effect: "Levitate Objects", icon: "🪶" },
+            { name: "Accio", effect: "Summon Items", icon: "🧲" },
+            { name: "Protego Maxima", effect: "Ultimate Shield", icon: "🛡️" },
+            { name: "Expelliarmus", effect: "Disarm Enemies", icon: "⚡" },
+            { name: "Expecto Patronum", effect: "Conjure Guardian", icon: "🦌" },
+            { name: "Stupefy", effect: "Stunning Spell", icon: "💫" }
+        ];
+
+        // Application state
+        let appState = {
+            tasks: [],
+            dailyQuests: [],
+            selectedHouse: 'gryffindor',
+            housePoints: 0,
+            streak: 0,
+            completedTasksToday: 0,
+            searchQuery: ''
+        };
+
+        // Utility functions
+        function uid() {
+            return Math.random().toString(36).slice(2, 9);
+        }
+
+        function showReward(message) {
+            const notification = document.getElementById('reward-notification');
+            notification.textContent = message;
+            notification.classList.remove('hidden');
+            notification.classList.add('reward-popup');
+            
+            setTimeout(() => {
+                notification.classList.add('hidden');
+                notification.classList.remove('reward-popup');
+            }, 4000);
+        }
+
+        function updateHouseTheme() {
+            const house = HOUSES[appState.selectedHouse];
+            const emblem = document.getElementById('house-emblem');
+            const houseInfo = document.getElementById('house-info');
+            const houseTraits = document.getElementById('house-traits');
+            const houseWisdom = document.getElementById('house-wisdom');
+            
+            // Update emblem
+            emblem.textContent = house.emoji;
+            emblem.className = `w-24 h-24 rounded-full flex items-center justify-center text-4xl ${house.colors} shadow-2xl border-4 border-purple-400/30 cursor-pointer transition-all hover:scale-110 hover:rotate-12`;
+            
+            // Update house info
+            houseInfo.textContent = `${house.name} • ${house.motto}`;
+            
+            // Update traits
+            houseTraits.innerHTML = house.traits.map(trait => 
+                `<span class="text-sm px-3 py-1 bg-purple-600/30 rounded-full border border-purple-400/40">${trait}</span>`
+            ).join('');
+            
+            // Update wisdom title
+            houseWisdom.textContent = `🏰 ${house.name} Wisdom`;
+        }
+
+        function updateProgress() {
+            const completedTasks = appState.tasks.filter(t => t.done).length;
+            const totalTasks = appState.tasks.length;
+            const completionRate = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+            
+            document.getElementById('completion-rate').textContent = `${completionRate}%`;
+            document.getElementById('progress-bar').style.width = `${completionRate}%`;
+            document.getElementById('progress-text').textContent = 
+                `${completedTasks} of ${totalTasks} tasks completed • ${appState.completedTasksToday} completed today`;
+            document.getElementById('house-points').textContent = appState.housePoints;
+            document.getElementById('streak').textContent = appState.streak;
+        }
+
+        function createTaskElement(task) {
+            const house = HOUSES[task.house];
+            const taskDiv = document.createElement('div');
+            taskDiv.className = `p-6 rounded-2xl backdrop-blur-sm border-2 shadow-2xl transition-all hover:shadow-purple-500/25 glow-purple ${
+                task.done 
+                    ? 'bg-emerald-600/20 border-emerald-500/40' 
+                    : `bg-gradient-to-br ${house.bgColors} border-purple-400/30`
+            }`;
+            taskDiv.id = `task-${task.id}`;
+            
+            const stars = '⭐'.repeat(task.difficulty);
+            
+            taskDiv.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-6">
+                        <button 
+                            onclick="toggleTask('${task.id}')"
+                            class="w-14 h-14 rounded-full flex items-center justify-center border-3 transition-all text-xl ${
+                                task.done 
+                                    ? "bg-emerald-500 border-emerald-400 text-white shadow-lg shadow-emerald-500/50" 
+                                    : "bg-black/30 border-purple-400/50 hover:border-yellow-400/80 hover:shadow-lg hover:shadow-purple-500/30"
+                            } hover:scale-110"
+                        >
+                            ${task.done ? "✓" : "⭐"}
+                        </button>
+                        <div>
+                            <div class="font-bold text-xl ${task.done ? "line-through opacity-60" : "text-white"}">
+                                ${task.text}
+                            </div>
+                            <div class="flex items-center gap-4 mt-2">
+                                <span class="text-lg opacity-80">
+                                    📅 ${new Date(task.createdAt).toLocaleDateString()}
+                                </span>
+                                <div class="flex text-lg">
+                                    ${stars}
+                                </div>
+                                <span class="text-lg text-emerald-400 font-semibold">+${task.difficulty * 10} pts</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-3xl">${house.emoji}</span>
+                        <button 
+                            onclick="deleteTask('${task.id}')"
+                            class="px-6 py-3 rounded-xl bg-red-600/30 border-2 border-red-500/40 text-red-300 hover:bg-red-600/40 transition-all hover:scale-105 font-semibold"
+                        >
+                            🗑️ Vanish
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return taskDiv;
+        }
+
+        function createDailyQuestElement(quest) {
+            const questDiv = document.createElement('div');
+            questDiv.className = `p-5 rounded-xl border-2 transition-all hover:scale-102 ${
+                quest.completed 
+                    ? 'bg-emerald-600/20 border-emerald-500/40 glow-purple' 
+                    : 'bg-black/40 border-purple-400/40 hover:border-yellow-400/60 glow-purple'
+            }`;
+            questDiv.id = `quest-${quest.id}`;
+            
+            questDiv.innerHTML = `
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <div class="font-semibold text-lg ${quest.completed ? "line-through opacity-60" : "text-white"}">
+                            ${quest.text}
+                        </div>
+                        <div class="text-lg text-yellow-400 mt-2 font-semibold">+${quest.points} house points</div>
+                    </div>
+                    <div class="flex flex-col gap-3 ml-4">
+                        <button 
+                            onclick="toggleDailyQuest('${quest.id}')"
+                            class="text-sm py-2 px-4 rounded-lg transition-all hover:scale-105 font-semibold ${
+                                quest.completed 
+                                    ? 'bg-yellow-500/30 text-yellow-300 border border-yellow-400/40' 
+                                    : 'bg-emerald-500/30 text-emerald-300 hover:bg-emerald-500/40 border border-emerald-400/40'
+                            }"
+                        >
+                            ${quest.completed ? "🔄 Undo" : "✨ Complete"}
+                        </button>
+                        <button 
+                            onclick="addDailyToTasks('${quest.id}')"
+                            class="text-sm py-2 px-4 rounded-lg bg-blue-500/30 text-blue-300 hover:bg-blue-500/40 transition-all hover:scale-105 border border-blue-400/40 font-semibold"
+                        >
+                            📋 Add to Tasks
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return questDiv;
+        }
+
+        function renderTasks() {
+            const container = document.getElementById('tasks-container');
+            const emptyState = document.getElementById('empty-state');
+            const taskCount = document.getElementById('task-count');
+            
+            const filteredTasks = appState.tasks.filter(task => 
+                task.text.toLowerCase().includes(appState.searchQuery.toLowerCase())
+            );
+            
+            taskCount.textContent = `(${filteredTasks.length})`;
+            
+            if (filteredTasks.length === 0) {
+                container.innerHTML = '';
+                container.appendChild(emptyState);
+                if (appState.searchQuery) {
+                    emptyState.innerHTML = `
+                        <div class="text-6xl mb-4">🦉</div>
+                        <div class="text-2xl opacity-90 magical-text">No magical tasks match your search spell...</div>
+                    `;
+                } else {
+                    emptyState.innerHTML = `
+                        <div class="text-6xl mb-4">🦉</div>
+                        <div class="text-2xl opacity-90 magical-text">Your quest log is empty! Time for some magical adventures!</div>
+                    `;
+                }
+            } else {
+                container.innerHTML = '';
+                filteredTasks.forEach(task => {
+                    container.appendChild(createTaskElement(task));
+                });
+            }
+        }
+
+        function renderDailyQuests() {
+            const container = document.getElementById('daily-quests-container');
+            const emptyState = document.getElementById('daily-empty-state');
+            
+            if (appState.dailyQuests.length === 0) {
+                container.innerHTML = '';
+                container.appendChild(emptyState);
+            } else {
+                container.innerHTML = '';
+                appState.dailyQuests.forEach(quest => {
+                    container.appendChild(createDailyQuestElement(quest));
+                });
+            }
+        }
+
+        // Task management functions
+        function addTask() {
+            const input = document.getElementById('new-task-input');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            const task = {
+                id: uid(),
+                text,
+                done: false,
+                createdAt: Date.now(),
+                house: appState.selectedHouse,
+                difficulty: Math.floor(Math.random() * 3) + 1
+            };
+            
+            appState.tasks.unshift(task);
+            input.value = '';
+            
+            renderTasks();
+            updateProgress();
+            
+            const spell = SPELLS[Math.floor(Math.random() * SPELLS.length)];
+            showReward(`${spell.icon} Task enchanted with ${spell.name}! ${spell.effect} awaits!`);
+        }
+
+        function toggleTask(taskId) {
+            const taskIndex = appState.tasks.findIndex(t => t.id === taskId);
+            if (taskIndex === -1) return;
+            
+            const task = appState.tasks[taskIndex];
+            task.done = !task.done;
+            
+            if (task.done) {
+                const points = task.difficulty * 15;
+                appState.housePoints += points;
+                appState.completedTasksToday += 1;
+                appState.streak += 1;
+                
+                const reward = MAGICAL_REWARDS[Math.floor(Math.random() * MAGICAL_REWARDS.length)];
+                showReward(reward);
+                
+                // Add completion animation
+                const taskElement = document.getElementById(`task-${taskId}`);
+                if (taskElement) {
+                    taskElement.classList.add('task-completed');
+                }
+            } else {
+                const points = task.difficulty * 15;
+                appState.housePoints = Math.max(0, appState.housePoints - points);
+                appState.completedTasksToday = Math.max(0, appState.completedTasksToday - 1);
+            }
+            
+            renderTasks();
+            updateProgress();
+        }
+
+        function deleteTask(taskId) {
+            appState.tasks = appState.tasks.filter(t => t.id !== taskId);
+            renderTasks();
+            updateProgress();
+            showReward("🗑️ Task vanished into the void!");
+        }
+
+        function generateDailyQuests(count = 3) {
+            const pick = [];
+            const pool = [...SAMPLE_QUESTS];
+            
+            while (pick.length < count && pool.length > 0) {
+                const i = Math.floor(Math.random() * pool.length);
+                pick.push({
+                    id: uid(),
+                    text: pool.splice(i, 1)[0],
+                    completed: false,
+                    points: Math.floor(Math.random() * 30) + 20
+                });
+            }
+            
+            appState.dailyQuests = pick;
+            renderDailyQuests();
+            
+            showReward("🔮 Daily quests materialized from the crystal ball's ancient magic!");
+        }
+
+        function toggleDailyQuest(questId) {
+            const questIndex = appState.dailyQuests.findIndex(q => q.id === questId);
+            if (questIndex === -1) return;
+            
+            const quest = appState.dailyQuests[questIndex];
+            quest.completed = !quest.completed;
+            
+            if (quest.completed) {
+                appState.housePoints += quest.points;
+                showReward(`🏆 Quest completed! +${quest.points} house points earned for your noble house!`);
+            } else {
+                appState.housePoints = Math.max(0, appState.housePoints - quest.points);
+            }
+            
+            renderDailyQuests();
+            updateProgress();
+        }
+
+        function addDailyToTasks(questId) {
+            const quest = appState.dailyQuests.find(q => q.id === questId);
+            if (!quest) return;
+            
+            const task = {
+                id: uid(),
+                text: quest.text,
+                done: false,
+                createdAt: Date.now(),
+                house: appState.selectedHouse,
+                difficulty: Math.floor(Math.random() * 3) + 1
+            };
+            
+            appState.tasks.unshift(task);
+            renderTasks();
+            updateProgress();
+            
+            showReward("📋 Quest transcribed into your magical task grimoire!");
+        }
+
+        function clearDailyQuests() {
+            appState.dailyQuests = [];
+            renderDailyQuests();
+            showReward("🧹 Daily quests cleared by powerful cleansing charm!");
+        }
+
+        function castSpell() {
+            const spell = SPELLS[Math.floor(Math.random() * SPELLS.length)];
+            const button = document.getElementById('cast-spell-btn');
+            button.innerHTML = `Cast ${spell.name} ${spell.icon}`;
+            button.classList.add('pulse-glow');
+            
+            showReward(`${spell.icon} ${spell.name} successfully cast! ${spell.effect} is now active!`);
+            
+            setTimeout(() => {
+                button.classList.remove('pulse-glow');
+            }, 2500);
+        }
+
+        function changeHouse(houseId) {
+            appState.selectedHouse = houseId;
+            updateHouseTheme();
+            showReward(`🏠 Sorting Hat declares: Welcome to ${HOUSES[houseId].name}! ${HOUSES[houseId].emoji}`);
+        }
+
+        function searchTasks(query) {
+            appState.searchQuery = query;
+            renderTasks();
+        }
+
+        // Enhanced magical particles animation
+        function createMagicalParticles() {
+            const container = document.getElementById('particles-container');
+            
+            setInterval(() => {
+                if (container.children.length < 12) {
+                    const particle = document.createElement('div');
+                    particle.className = 'magical-particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 3 + 's';
+                    particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                    
+                    // Random particle types
+                    const particleTypes = ['⭐', '✨', '💫', '🌟', '💜', '🔮'];
+                    const randomType = particleTypes[Math.floor(Math.random() * particleTypes.length)];
+                    particle.textContent = randomType;
+                    particle.style.fontSize = (Math.random() * 8 + 4) + 'px';
+                    
+                    container.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (container.contains(particle)) {
+                            container.removeChild(particle);
+                        }
+                    }, 25000);
+                }
+            }, 1500);
+        }
+
+        // Event listeners and initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved state
+            try {
+                const saved = localStorage.getItem('hogwarts_tasks_dark_purple');
+                if (saved) {
+                    const loadedState = JSON.parse(saved);
+                    appState = { ...appState, ...loadedState };
+                }
+            } catch (e) {
+                console.log('Could not load state from localStorage');
+            }
+
+            // Initialize UI
+            updateHouseTheme();
+            renderTasks();
+            renderDailyQuests();
+            updateProgress();
+            createMagicalParticles();
+            
+            // Set house selector value
+            document.getElementById('house-selector').value = appState.selectedHouse;
+            
+            // Add task event listeners
+            document.getElementById('add-task-btn').addEventListener('click', addTask);
+            document.getElementById('new-task-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTask();
+                }
+            });
+            
+            // House selector
+            document.getElementById('house-selector').addEventListener('change', function(e) {
+                changeHouse(e.target.value);
+            });
+            
+            // Search functionality
+            document.getElementById('search-input').addEventListener('input', function(e) {
+                searchTasks(e.target.value);
+            });
+            
+            // Magic controls
+            document.getElementById('cast-spell-btn').addEventListener('click', castSpell);
+            document.getElementById('summon-quests-btn').addEventListener('click', () => generateDailyQuests(3));
+            document.getElementById('summon-daily-btn').addEventListener('click', () => generateDailyQuests(3));
+            document.getElementById('clear-daily-btn').addEventListener('click', clearDailyQuests);
+            
+            // House emblem click animation
+            document.getElementById('house-emblem').addEventListener('click', function() {
+                this.style.transform = 'rotate(720deg) scale(1.3)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 800);
+                castSpell();
+            });
+            
+            // Add some sample tasks for demonstration if no tasks exist
+            if (appState.tasks.length === 0) {
+                setTimeout(() => {
+                    const sampleTasks = [
+                        "Master the advanced Patronus charm technique",
+                        "Study Defense Against the Dark Arts: Dementor resistance",
+                        "Organize rare potion ingredients by magical properties"
+                    ];
+                    
+                    sampleTasks.forEach(taskText => {
+                        const task = {
+                            id: uid(),
+                            text: taskText,
+                            done: false,
+                            createdAt: Date.now(),
+                            house: appState.selectedHouse,
+                            difficulty: Math.floor(Math.random() * 3) + 1
+                        };
+                        appState.tasks.push(task);
+                    });
+                    
+                    renderTasks();
+                    updateProgress();
+                }, 1200);
+            }
+            
+            // Generate initial daily quests if none exist
+            if (appState.dailyQuests.length === 0) {
+                setTimeout(() => {
+                    generateDailyQuests(3);
+                }, 1800);
+            }
+        });
+
+        // Global functions for onclick handlers
+        window.toggleTask = toggleTask;
+        window.deleteTask = deleteTask;
+        window.toggleDailyQuest = toggleDailyQuest;
+        window.addDailyToTasks = addDailyToTasks;
+
+        // Auto-save functionality
+        function saveState() {
+            try {
+                localStorage.setItem('hogwarts_tasks_dark_purple', JSON.stringify(appState));
+            } catch (e) {
+                console.log('Could not save state to localStorage');
+            }
+        }
+
+        // Save state on page unload
+        window.addEventListener('beforeunload', saveState);
+
+        // Periodic auto-save
+        setInterval(saveState, 30000); // Save every 30 seconds
+
+        // Save state when tasks change
+        const originalRenderTasks = renderTasks;
+        const originalRenderDailyQuests = renderDailyQuests;
+        
+        renderTasks = function() {
+            originalRenderTasks.call(this);
+            saveState();
+        };
+        
+        renderDailyQuests = function() {
+            originalRenderDailyQuests.call(this);
+            saveState();
+        };
+    </script>
+</body>
+</html>
